@@ -1,28 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
+import axios from "axios";
 
 const PopularServices = () => {
-  const services = [
-    {
-      id: 1,
-      image: "/images/service1.jpg",
-      name: "Service Name 1",
-      description: "Short description of the service goes here...",
-      providerImage: "/images/provider1.jpg",
-      providerName: "Provider 1",
-      price: "$50",
-    },
-    {
-      id: 2,
-      image: "/images/service2.jpg",
-      name: "Service Name 2",
-      description: "Another short description...",
-      providerImage: "/images/provider2.jpg",
-      providerName: "Provider 2",
-      price: "$60",
-    },
-    // Add more service data as needed
-  ];
+  const [services, setServices] = useState([]); // Initialize as an empty array
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
+
+  useEffect(() => {
+    fetchAllServices();
+  }, []);
+
+  const fetchAllServices = async () => {
+    try {
+      const { data } = await axios.get(`http://localhost:9000/services`);
+      setServices(data);
+      setLoading(false); // Set loading to false after data is fetched
+    } catch (err) {
+      setError("Failed to load services.");
+      setLoading(false); // Set loading to false even if there is an error
+    }
+  };
+
+  // Render loading state
+  if (loading) {
+    return (
+      <section className="py-10 px-4 bg-gray-100 text-center">
+        <h2 className="text-2xl font-bold mb-6">Loading Popular Services...</h2>
+        <div className="spinner-border text-primary" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </section>
+    );
+  }
+
+  // Render error state
+  if (error) {
+    return (
+      <section className="py-10 px-4 bg-gray-100 text-center">
+        <h2 className="text-2xl font-bold mb-6 text-red-600">{error}</h2>
+      </section>
+    );
+  }
 
   return (
     <section className="py-10 px-4 bg-gray-100">
@@ -32,13 +51,13 @@ const PopularServices = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service) => (
           <ServiceCard
-            key={service.id}
-            image={service.image}
-            name={service.name}
-            description={service.description}
-            providerImage={service.providerImage}
-            providerName={service.providerName}
-            price={service.price}
+            key={service._id}
+            image={service.serviceImage}
+            name={service.serviceName}
+            description={service.serviceDescription}
+            providerImage={service.serviceProviderImage}
+            providerName={service.serviceProviderName}
+            price={service.servicePrice}
           />
         ))}
       </div>

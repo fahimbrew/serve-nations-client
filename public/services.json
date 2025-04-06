@@ -1,0 +1,61 @@
+[
+    {
+      "serviceImage": "https://i.ibb.co.com/zHhtvbwc/programming-background-with-person-working-with-codes-computer-23-2150010130.jpg",
+      "serviceName": "Online Coding Bootcamp",
+      "serviceDescription": "Learn full-stack development with hands-on coding challenges.",
+      "serviceProviderImage": "https://i.ibb.co.com/Y7bNtC5p/premium-photo-1732117940281-e1598445016c-q-80-w-3387-auto-format-fit-crop-ixlib-rb-4-0.jpg",
+      "serviceProviderName": "Code Academy",
+      "servicePrice": "$999"
+    },
+    {
+      "serviceImage": "https://i.ibb.co.com/q3FZdrLN/foreign-languages-translating-linguistics-science-machine-translation-university-students-exchange-p.jpg",
+      "serviceName": "Language Learning",
+      "serviceDescription": "Master new languages with interactive lessons and games.",
+      "serviceProviderImage": "https://i.ibb.co.com/Y7bNtC5p/premium-photo-1732117940281-e1598445016c-q-80-w-3387-auto-format-fit-crop-ixlib-rb-4-0.jpg",
+      "serviceProviderName": "FluentU",
+      "servicePrice": "$199"
+    },
+    {
+      "serviceImage": "https://i.ibb.co.com/cchjvFbJ/successful-business-people-with-strategic-plans-53876-146864.jpg",
+      "serviceName": "Business Strategy Mastery",
+      "serviceDescription": "Enhance your business strategy skills with expert-led courses.",
+      "serviceProviderImage": "https://i.ibb.co.com/Y7bNtC5p/premium-photo-1732117940281-e1598445016c-q-80-w-3387-auto-format-fit-crop-ixlib-rb-4-0.jpg",
+      "serviceProviderName": "Business Academy",
+      "servicePrice": "$299"
+    },
+    {
+      "serviceImage": "https://i.ibb.co.com/RTcc8Bx2/programming-background-collage-23-2149901773.jpg",
+      "serviceName": "Advanced Data Science",
+      "serviceDescription": "Learn advanced data analysis and machine learning techniques.",
+      "serviceProviderImage": "https://i.ibb.co.com/Y7bNtC5p/premium-photo-1732117940281-e1598445016c-q-80-w-3387-auto-format-fit-crop-ixlib-rb-4-0.jpg",
+      "serviceProviderName": "Data Experts",
+      "servicePrice": "$599"
+    },
+    {
+      "serviceImage": "https://i.ibb.co.com/76cGLX5/man-inspecting-device-office-23-2147785062.jpg",
+      "serviceName": "SAT Preparation",
+      "serviceDescription": "Prepare for the SAT with personalized lessons and practice tests.",
+      "serviceProviderImage": "https://i.ibb.co.com/Y7bNtC5p/premium-photo-1732117940281-e1598445016c-q-80-w-3387-auto-format-fit-crop-ixlib-rb-4-0.jpg",
+      "serviceProviderName": "PrepGenie",
+      "servicePrice": "$150"
+    },
+    {
+      "serviceImage": "https://i.ibb.co.com/0VVLxZgx/girl-painting-canvas-23-2148002501.jpg",
+      "serviceName": "Art & Design Classes",
+      "serviceDescription": "Learn graphic design, art techniques, and creative skills.",
+      "serviceProviderImage": "https://i.ibb.co.com/Y7bNtC5p/premium-photo-1732117940281-e1598445016c-q-80-w-3387-auto-format-fit-crop-ixlib-rb-4-0.jpg",
+      "serviceProviderName": "Creative Arts Academy",
+      "servicePrice": "$249"
+    },
+    {
+      "serviceImage": "https://i.ibb.co.com/Tq7kTbkc/map-lying-wooden-table-53876-23515.jpg",
+      "serviceName": "Financial Literacy Course",
+      "serviceDescription": "Understand personal finance, investments, and wealth building.",
+      "serviceProviderImage": "https://i.ibb.co.com/Y7bNtC5p/premium-photo-1732117940281-e1598445016c-q-80-w-3387-auto-format-fit-crop-ixlib-rb-4-0.jpg",
+      "serviceProviderName": "Money Smart Academy",
+      "servicePrice": "$399"
+    }
+
+  
+  ]
+  
