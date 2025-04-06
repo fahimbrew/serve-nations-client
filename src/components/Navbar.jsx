@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-
-import { FaUserCircle } from "react-icons/fa";
 import { useContext } from "react";
+import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../providers/AuthContext";
 
 const Navbar = () => {
@@ -23,30 +22,53 @@ const Navbar = () => {
       <li>
         <NavLink to="/services">Services</NavLink>
       </li>
-      {user && (
-        <li>
-          <NavLink to="/dashboard">Dashboard</NavLink>
-        </li>
-      )}
     </>
   );
 
   return (
     <div className="bg-base-100 shadow-md">
       <div className="navbar max-w-7xl mx-auto px-4">
+        {/* Start */}
         <div className="navbar-start">
           <Link to="/" className="text-xl font-bold">
-            ServiceShare
+            Serve Nations
           </Link>
         </div>
 
+        {/* Center */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-2">{navLinks}</ul>
         </div>
 
-        <div className="navbar-end">
+        {/* End (Right side) */}
+        <div className="navbar-end gap-3">
           {user ? (
             <div className="flex items-center gap-3">
+              {/* Dashboard Dropdown */}
+              <div className="dropdown dropdown-hover">
+                <label tabIndex={0} className="btn btn-sm btn-outline m-1">
+                  Dashboard
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <NavLink to="/add-service">Add Service</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/manage-services">Manage Service</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/booked">Booked Services</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/service-todo">Service To-Do</NavLink>
+                  </li>
+                </ul>
+              </div>
+
+              {/* User Info */}
               <div className="hidden md:block font-medium">
                 {user.displayName}
               </div>
@@ -64,45 +86,60 @@ const Navbar = () => {
               </button>
             </div>
           ) : (
-            <Link to="/login" className="btn btn-sm btn-primary">
+            <Link to="/login" className="btn btn-sm bg-lime-600 text-white">
               Login
             </Link>
           )}
-        </div>
 
-        {/* Mobile Menu */}
-        <div className="dropdown dropdown-end lg:hidden">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          {/* Mobile Menu */}
+          <div className="dropdown dropdown-end lg:hidden">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            {navLinks}
-            {user ? (
-              <li>
-                <button onClick={handleLogOut}>Logout</button>
-              </li>
-            ) : (
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            )}
-          </ul>
+              {navLinks}
+              {user && (
+                <>
+                  <li>
+                    <NavLink to="/add-service">Add Service</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/manage-services">Manage Service</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/booked">Booked Services</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/service-todo">Service To-Do</NavLink>
+                  </li>
+                  <li>
+                    <button onClick={handleLogOut}>Logout</button>
+                  </li>
+                </>
+              )}
+              {!user && (
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
