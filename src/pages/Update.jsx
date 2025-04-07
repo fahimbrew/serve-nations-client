@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast"; // for notifications
 
 const UpdateServicePage = () => {
   const { id } = useParams(); // Get the service ID from the URL
-  //   const history = useHistory(); // For redirecting after successful update
+  const navigate = useNavigate();
   const [service, setService] = useState({
     serviceName: "",
     serviceDescription: "",
     servicePrice: "",
     serviceImage: "",
-    serviceArea: "",
+    serviceLocation: "", // Change to serviceLocation
   });
 
   useEffect(() => {
@@ -40,7 +40,9 @@ const UpdateServicePage = () => {
       .put(`http://localhost:9000/service/${id}`, service)
       .then((res) => {
         toast.success("Service updated successfully.");
-        history.push("/manage-services"); // Redirect to Manage Services page
+        navigate("/manage-services");
+        // Redirect to Manage Services page after successful update (if necessary)
+        // history.push("/manage-services");
       })
       .catch((err) => {
         console.error("Error updating service: ", err);
@@ -128,21 +130,21 @@ const UpdateServicePage = () => {
           />
         </div>
 
-        {/* Service Area */}
+        {/* Service Location */}
         <div>
           <label
-            htmlFor="serviceArea"
+            htmlFor="serviceLocation"
             className="block text-sm font-medium text-gray-700"
           >
-            Service Area
+            Service Location
           </label>
           <input
             type="text"
-            name="serviceArea"
-            value={service.serviceLocation}
+            name="serviceLocation" // Change to serviceLocation
+            value={service.serviceLocation} // Changed to match the field name
             onChange={handleChange}
             className="w-full p-2 border rounded-lg"
-            placeholder="Enter service area"
+            placeholder="Enter service location"
             required
           />
         </div>
