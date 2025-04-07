@@ -32,7 +32,7 @@ const Navbar = () => {
   const dashboardLinks = (
     <>
       <li>
-        <NavLink to="/add-service">Add Service</NavLink>
+        <NavLink to="/addService">Add Service</NavLink>
       </li>
       <li>
         <NavLink to="/manage-services">Manage Service</NavLink>
