@@ -3,6 +3,9 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import LoginPage from "../pages/Login";
 import RegisterPage from "../pages/RegisterPage";
+import Services from "../pages/Services";
+import ServiceDetails from "../pages/ServiceDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,18 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+      {
+        path: "/service/:id",
+        element: (
+          <PrivateRoute>
+            <ServiceDetails />
+          </PrivateRoute>
+        ),
       },
     ],
   },

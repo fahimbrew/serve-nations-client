@@ -17,10 +17,31 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className="text-base font-medium">
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/services">Services</NavLink>
+        <NavLink to="/services" className="text-base font-medium">
+          Services
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const dashboardLinks = (
+    <>
+      <li>
+        <NavLink to="/add-service">Add Service</NavLink>
+      </li>
+      <li>
+        <NavLink to="/manage-services">Manage Service</NavLink>
+      </li>
+      <li>
+        <NavLink to="/booked">Booked Services</NavLink>
+      </li>
+      <li>
+        <NavLink to="/service-todo">Service To-Do</NavLink>
       </li>
     </>
   );
@@ -28,47 +49,73 @@ const Navbar = () => {
   return (
     <div className="bg-base-100 shadow-md">
       <div className="navbar max-w-7xl mx-auto px-4">
-        {/* Start */}
+        {/* Mobile Dropdown - Left */}
         <div className="navbar-start">
-          <Link to="/" className="text-xl font-bold">
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              {navLinks}
+              {user && dashboardLinks}
+              {!user && (
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              )}
+              {user && (
+                <li>
+                  <button onClick={handleLogOut}>Logout</button>
+                </li>
+              )}
+            </ul>
+          </div>
+
+          {/* Brand Logo */}
+          <Link to="/" className="text-xl font-bold ml-2">
             Serve Nations
           </Link>
         </div>
 
-        {/* Center */}
+        {/* Desktop Navigation */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-2">{navLinks}</ul>
+          <ul className="menu menu-horizontal gap-3 px-1">{navLinks}</ul>
         </div>
 
-        {/* End (Right side) */}
+        {/* Right - Auth Area */}
         <div className="navbar-end gap-3">
           {user ? (
             <div className="flex items-center gap-3">
-              {/* Dashboard Dropdown */}
-              <div className="dropdown dropdown-hover">
-                <label tabIndex={0} className="btn btn-sm btn-outline m-1">
+              {/* Dashboard Dropdown (only on lg) */}
+              <div className="dropdown hidden lg:block">
+                <label tabIndex={0} className="btn btn-sm btn-outline">
                   Dashboard
                 </label>
                 <ul
                   tabIndex={0}
                   className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                 >
-                  <li>
-                    <NavLink to="/add-service">Add Service</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/manage-services">Manage Service</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/booked">Booked Services</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/service-todo">Service To-Do</NavLink>
-                  </li>
+                  {dashboardLinks}
                 </ul>
               </div>
 
-              {/* User Info */}
+              {/* Display name and avatar */}
               <div className="hidden md:block font-medium">
                 {user.displayName}
               </div>
@@ -90,56 +137,6 @@ const Navbar = () => {
               Login
             </Link>
           )}
-
-          {/* Mobile Menu */}
-          <div className="dropdown dropdown-end lg:hidden">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              {navLinks}
-              {user && (
-                <>
-                  <li>
-                    <NavLink to="/add-service">Add Service</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/manage-services">Manage Service</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/booked">Booked Services</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/service-todo">Service To-Do</NavLink>
-                  </li>
-                  <li>
-                    <button onClick={handleLogOut}>Logout</button>
-                  </li>
-                </>
-              )}
-              {!user && (
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-              )}
-            </ul>
-          </div>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 
-import { useNavigate } from "react-router-dom"; // Already imported for navigation
+import { useLocation, useNavigate } from "react-router-dom"; // Already imported for navigation
 import { Link } from "react-router-dom"; // Import the Link component
 import { AuthContext } from "../providers/AuthContext";
 
@@ -10,12 +10,14 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state || "/";
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await login(email, password);
-      navigate("/");
+      navigate(from);
     } catch (err) {
       setError("Invalid email or password");
     }
@@ -24,7 +26,7 @@ const LoginPage = () => {
   const handleGoogleLogin = async () => {
     try {
       await googleLogin();
-      navigate("/");
+      navigate(from);
     } catch (err) {
       setError("Google login failed");
     }

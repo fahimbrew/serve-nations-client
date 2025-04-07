@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const PopularServices = () => {
   const [services, setServices] = useState([]); // Initialize as an empty array
@@ -58,13 +59,14 @@ const PopularServices = () => {
             providerImage={service.serviceProviderImage}
             providerName={service.serviceProviderName}
             price={service.servicePrice}
+            id={service._id}
           />
         ))}
       </div>
       <div className="text-center mt-6">
-        <a href="/all-services" className="btn btn-outline btn-primary">
+        <Link to="/services" className="btn btn-outline btn-primary">
           Show All
-        </a>
+        </Link>
       </div>
     </section>
   );

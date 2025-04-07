@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ServiceCard = ({
   image,
@@ -7,6 +8,7 @@ const ServiceCard = ({
   providerImage,
   providerName,
   price,
+  id,
 }) => {
   return (
     <div className="card w-full bg-white shadow-md hover:shadow-lg transition-shadow duration-300 rounded-xl overflow-hidden border border-gray-200">
@@ -40,9 +42,12 @@ const ServiceCard = ({
 
         <div className="card-actions mt-4 flex justify-between items-center">
           <p className="text-lg font-bold text-primary">{price}</p>
-          <button className="btn btn-sm btn-outline btn-primary">
+          <Link
+            to={`/service/${id}`}
+            className="btn btn-sm btn-outline btn-primary"
+          >
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>
