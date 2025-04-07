@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const BookingModal = ({ service, user, onClose }) => {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date());
   const [instruction, setInstruction] = useState("");
+  const navigate = useNavigate();
 
   const handleBooking = async () => {
     const bookingData = {
@@ -16,14 +19,15 @@ const BookingModal = ({ service, user, onClose }) => {
       userEmail: user.email,
       userName: user.displayName,
       serviceDate: date,
-      instruction,
+      instruction: instruction,
       serviceStatus: "pending",
     };
 
     try {
       await axios.post("http://localhost:9000/bookings", bookingData);
       onClose();
-      alert("Booking successful!");
+      toast.success("Booking successful!");
+      navigate(`/bookings/${user?.email}`);
     } catch (error) {
       alert("Booking failed!");
     }
@@ -70,6 +74,7 @@ const BookingModal = ({ service, user, onClose }) => {
           <div>
             <label className="block mt-3">Special Instructions</label>
             <textarea
+              name="instruction"
               className="textarea textarea-bordered w-full"
               placeholder="e.g. Location, custom notes"
               value={instruction}

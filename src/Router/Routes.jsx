@@ -6,12 +6,14 @@ import RegisterPage from "../pages/RegisterPage";
 import Services from "../pages/Services";
 import ServiceDetails from "../pages/ServiceDetails";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/ErrorPage";
+import BookedServices from "../pages/BookedServices";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <h1>Error Page 404 not found</h1>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ServiceDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/bookings/:email",
+        element: (
+          <PrivateRoute>
+            <BookedServices />
           </PrivateRoute>
         ),
       },

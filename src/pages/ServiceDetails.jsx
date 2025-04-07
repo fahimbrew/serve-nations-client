@@ -25,8 +25,8 @@ const ServiceDetails = () => {
     servicePrice,
     serviceProviderImage,
     serviceProviderName,
-    // serviceProviderEmail,
-    // serviceLocation,
+    serviceProviderEmail,
+    serviceLocation,
   } = service;
   console.log(service);
 
@@ -51,7 +51,7 @@ const ServiceDetails = () => {
             />
             <div>
               <p className="font-semibold">{serviceProviderName}</p>
-              {/* <p className="text-sm text-gray-500">📍 {serviceLocation}</p> */}
+              <p className="text-sm text-gray-500">📍 {serviceLocation}</p>
             </div>
           </div>
 
