@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { AuthContext } from "../providers/AuthContext";
+import { Link } from "react-router-dom";
 
 const ManageServices = () => {
   const { user } = useContext(AuthContext);
@@ -67,12 +68,12 @@ const ManageServices = () => {
               <p className="text-lime-600 font-bold">{service.servicePrice}</p>
 
               <div className="flex justify-between mt-4">
-                <button
+                <Link
+                  to={`/update/${service._id}`}
                   className="btn btn-sm btn-info"
-                  onClick={() => toast("Open edit modal here")}
                 >
                   Edit
-                </button>
+                </Link>
                 <button
                   className="btn btn-sm btn-error"
                   onClick={() => handleDelete(service._id)}

@@ -2,9 +2,11 @@ import React, { useState, useContext } from "react";
 
 import axios from "axios";
 import { AuthContext } from "../providers/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const AddServicePage = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     serviceImage: "",
@@ -39,6 +41,7 @@ const AddServicePage = () => {
         servicePrice: "",
         serviceLocation: "",
       });
+      navigate("/services");
     } catch (err) {
       setMessage("❌ Failed to add service.");
       console.error(err);

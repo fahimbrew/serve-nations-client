@@ -10,6 +10,7 @@ import ErrorPage from "../pages/ErrorPage";
 import BookedServices from "../pages/BookedServices";
 import AddServicePage from "../pages/AddServicePage";
 import ManageServices from "../pages/ManageServices";
+import UpdateServicePage from "../pages/Update";
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/manage-services",
-        element: <ManageServices />,
+        element: (
+          <PrivateRoute>
+            <ManageServices />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateServicePage />
+          </PrivateRoute>
+        ),
       },
     ],
   },
