@@ -12,7 +12,7 @@ const ManageServices = () => {
   const fetchServices = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:9000/services/user/${user?.email}`
+        `${import.meta.env.VITE_API_URL}/services/user/${user?.email}`
       );
       setServices(res.data);
     } catch (err) {
@@ -33,7 +33,7 @@ const ManageServices = () => {
     if (!confirm) return;
 
     try {
-      await axios.delete(`http://localhost:9000/service/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/service/${id}`);
       toast.success("Service deleted successfully.");
       setServices(services.filter((service) => service._id !== id));
     } catch (err) {

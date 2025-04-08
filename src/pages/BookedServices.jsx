@@ -10,7 +10,7 @@ const BookedServices = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:9000/bookings/${user.email}`)
+        .get(`${import.meta.env.VITE_API_URL}/bookings/${user.email}`)
         .then((res) => {
           setBookings(res.data);
         })

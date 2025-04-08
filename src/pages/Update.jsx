@@ -17,7 +17,7 @@ const UpdateServicePage = () => {
   useEffect(() => {
     // Fetch the current service data to pre-populate the form
     axios
-      .get(`http://localhost:9000/service/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/service/${id}`)
       .then((res) => setService(res.data))
       .catch((err) => {
         console.error("Error fetching service data: ", err);
@@ -37,7 +37,7 @@ const UpdateServicePage = () => {
 
     // Send the updated service data to the server
     axios
-      .put(`http://localhost:9000/service/${id}`, service)
+      .put(`${import.meta.env.VITE_API_URL}/service/${id}`, service)
       .then((res) => {
         toast.success("Service updated successfully.");
         navigate("/manage-services");

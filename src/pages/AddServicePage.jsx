@@ -32,7 +32,7 @@ const AddServicePage = () => {
     };
 
     try {
-      await axios.post("http://localhost:9000/services", newService);
+      await axios.post(`${import.meta.env.VITE_API_URL}/services`, newService);
       setMessage("✅ Service added successfully!");
       setFormData({
         serviceImage: "",

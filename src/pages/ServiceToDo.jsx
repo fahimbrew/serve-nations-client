@@ -14,7 +14,7 @@ const ServiceToDo = () => {
         if (!user?.email) return;
 
         const res = await axios.get(
-          `http://localhost:9000/bookings/provider/${user?.email}`
+          `${import.meta.env.VITE_API_URL}/bookings/provider/${user?.email}`
         );
 
         setBookedServices(res.data || []);
@@ -31,9 +31,12 @@ const ServiceToDo = () => {
 
   const handleStatusChange = async (bookingId, newStatus) => {
     try {
-      await axios.patch(`http://localhost:9000/bookings/status/${bookingId}`, {
-        serviceStatus: newStatus,
-      });
+      await axios.patch(
+        `${import.meta.env.VITE_API_URL}/bookings/status/${bookingId}`,
+        {
+          serviceStatus: newStatus,
+        }
+      );
 
       setBookedServices((prev) =>
         prev.map((item) =>

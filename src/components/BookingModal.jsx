@@ -24,7 +24,7 @@ const BookingModal = ({ service, user, onClose }) => {
     };
 
     try {
-      await axios.post("http://localhost:9000/bookings", bookingData);
+      await axios.post(`${import.meta.env.VITE_API_URL}/bookings`, bookingData);
       onClose();
       toast.success("Booking successful!");
       navigate(`/bookings/${user?.email}`);

@@ -11,7 +11,7 @@ const ServiceDetails = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:9000/service/${id}`).then((res) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/service/${id}`).then((res) => {
       setService(res.data);
     });
   }, [id]);
