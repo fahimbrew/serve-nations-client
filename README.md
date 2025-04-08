@@ -1,12 +1,60 @@
-# React + Vite
+# Service Nations - Service Sharing Platform 🛠️🤝
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **Service Nations**, a full-featured service-sharing platform where users can offer, discover, and book services. Whether you're a tutor, designer, developer, or any kind of service provider — Service Nations connects you to those who need your skills.
 
-Currently, two official plugins are available:
+🔗 **Live Website:** [https://glowing-cuchufli-a872de.netlify.app](https://glowing-cuchufli-a872de.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 **Authentication**
+
+  - Firebase Authentication for secure login/signup.
+  - Private routes for authenticated users only.
+
+- ➕ **Add Services**
+
+  - Authenticated users can add their services with detailed info and image URL.
+
+- 🔧 **Manage Services**
+
+  - View, edit, and delete your own services.
+  - Update via modal or separate route.
+  - Confirmation prompts before deletion.
+  - Uses `react-hot-toast` for notifications.
+
+- 📄 **Single Service Details**
+
+  - Private route at `/services/:id`.
+  - View full service details and book a service.
+
+- 📆 **Book Services**
+
+  - Users can book services with prefilled forms.
+  - Booking stored with default status `pending`.
+
+- 📋 **Service To-Do Page**
+  - Shows bookings where the logged-in user is the **service provider**.
+  - Dropdown to update booking status: `pending`, `working`, `completed`.
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+
+- **React** (Vite)
+- **React Router DOM** – for routing
+- **Tailwind CSS** + **DaisyUI** – for UI design
+- **Firebase Authentication** – for user auth
+- **Axios** – for API calls
+- **React Hot Toast** – for notifications
+
+### Backend
+
+- **Node.js** + **Express.js**
+- **MongoDB** – for database
+- **CORS**, **dotenv**, **body-parser**
+
+---
