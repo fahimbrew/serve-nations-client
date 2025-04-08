@@ -14,7 +14,9 @@ const PopularServices = () => {
 
   const fetchAllServices = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:9000/services`);
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/services`
+      );
       setServices(data);
       setLoading(false); // Set loading to false after data is fetched
     } catch (err) {
