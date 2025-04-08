@@ -9,6 +9,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase.init";
+import axios from "axios";
 
 const AuthProvider = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
@@ -41,9 +42,25 @@ const AuthProvider = ({ children }) => {
 
   // Observe auth state
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-      setUser(loggedUser);
-      console.log(loggedUser);
+    const unsubscribe = onAuthStateChanged(auth, async (loggedUser) => {
+      if (loggedUser?.email) {
+        setUser(loggedUser);
+        // setLoading(false);
+        const { data } = await axios.post(
+          `${import.meta.env.VITE_API_URL}/jwt`,
+          { email: loggedUser },
+          { withCredentials: true }
+        );
+      } else {
+        setUser(loggedUser);
+        // setLoading(false);
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/logout`,
+          { withCredentials: true }
+        );
+      }
+
+      // console.log(loggedUser);
       setLoading(false);
     });
 
